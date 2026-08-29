@@ -1,1 +1,1962 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#12395f">
 
+<title>Pharma Regulatory & Pricing Master</title>
+
+<style>
+:root{
+    --navy:#12395f;
+    --navy-dark:#092a49;
+    --blue:#1e5b8f;
+    --light-blue:#edf5fb;
+    --border:#d7e0e9;
+    --bg:#f4f7fa;
+    --white:#ffffff;
+    --text:#1d2939;
+    --muted:#667085;
+    --green-bg:#e8f5ec;
+    --green-text:#18713c;
+    --red-bg:#fdeaea;
+    --red-text:#b42318;
+    --yellow-bg:#fff4d6;
+    --yellow-text:#8a5a00;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html,body{
+    margin:0;
+    padding:0;
+    min-height:100%;
+}
+
+body{
+    font-family:Cambria, Georgia, serif;
+    background:var(--bg);
+    color:var(--text);
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header{
+    background:#fff;
+    border-bottom:3px solid var(--navy);
+    padding:18px 25px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.header-inner{
+    max-width:1500px;
+    margin:auto;
+}
+
+.header h1{
+    margin:0;
+    color:var(--navy);
+    font-size:25px;
+    font-weight:700;
+    letter-spacing:.3px;
+}
+
+.header p{
+    margin:5px 0 0;
+    color:var(--muted);
+    font-family:Arial,sans-serif;
+    font-size:12px;
+}
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.container{
+    max-width:1500px;
+    margin:auto;
+    padding:20px;
+}
+
+/* =========================================
+   MAIN TABS
+========================================= */
+
+.main-tabs{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:18px;
+}
+
+.main-tab{
+    border:1px solid var(--border);
+    background:#fff;
+    color:var(--navy);
+    padding:11px 18px;
+    border-radius:8px;
+    cursor:pointer;
+    font-family:Cambria,Georgia,serif;
+    font-size:14px;
+    font-weight:700;
+    transition:all .2s ease;
+}
+
+.main-tab:hover{
+    background:#edf4fa;
+}
+
+.main-tab.active{
+    background:var(--navy);
+    color:#fff;
+    border-color:var(--navy);
+}
+
+/* =========================================
+   CONTENT CARD
+========================================= */
+
+.content-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:20px;
+    box-shadow:0 3px 12px rgba(0,0,0,.04);
+    min-height:500px;
+}
+
+.page-heading{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    padding-bottom:13px;
+    border-bottom:1px solid var(--border);
+}
+
+.page-heading h2{
+    margin:0;
+    color:var(--navy);
+    font-size:21px;
+    font-weight:700;
+}
+
+.record-count{
+    background:var(--light-blue);
+    color:var(--navy);
+    border-radius:20px;
+    padding:7px 13px;
+    font-family:Arial,sans-serif;
+    font-size:12px;
+    font-weight:700;
+    white-space:nowrap;
+}
+
+/* =========================================
+   SECOND LEVEL TABS
+========================================= */
+
+.sub-tabs{
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
+    margin-top:18px;
+    margin-bottom:12px;
+}
+
+.sub-tab{
+    padding:9px 15px;
+    background:#f6f8fa;
+    border:1px solid var(--border);
+    border-radius:7px;
+    color:#344054;
+    cursor:pointer;
+    font-family:Cambria,Georgia,serif;
+    font-weight:700;
+    font-size:13px;
+    transition:.2s;
+}
+
+.sub-tab:hover{
+    background:#eef4f9;
+}
+
+.sub-tab.active{
+    background:#dfeefa;
+    color:var(--navy);
+    border-color:#9ebcd6;
+}
+
+/* =========================================
+   THIRD LEVEL TABS
+========================================= */
+
+.third-tabs{
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
+    margin:12px 0 18px;
+    padding:12px;
+    background:#f7f9fb;
+    border:1px solid var(--border);
+    border-left:4px solid var(--navy);
+    border-radius:7px;
+}
+
+.third-tab{
+    padding:8px 13px;
+    border:1px solid var(--border);
+    border-radius:6px;
+    background:#fff;
+    cursor:pointer;
+    color:#344054;
+    font-family:Cambria,Georgia,serif;
+    font-size:13px;
+    font-weight:700;
+    transition:.2s;
+}
+
+.third-tab:hover{
+    background:#edf4fa;
+}
+
+.third-tab.active{
+    background:var(--navy);
+    color:#fff;
+    border-color:var(--navy);
+}
+
+/* =========================================
+   FILTER
+========================================= */
+
+.filter-area{
+    display:grid;
+    grid-template-columns:2fr 1fr auto;
+    gap:10px;
+    margin-bottom:18px;
+}
+
+.search-box,
+.filter-select{
+    width:100%;
+    padding:11px 13px;
+    border:1px solid #cbd5e1;
+    border-radius:7px;
+    background:#fff;
+    color:#344054;
+    font-family:Arial,sans-serif;
+    font-size:13px;
+    outline:none;
+}
+
+.search-box:focus,
+.filter-select:focus{
+    border-color:var(--blue);
+}
+
+.btn-reset{
+    padding:10px 20px;
+    background:#eef1f4;
+    border:1px solid var(--border);
+    border-radius:7px;
+    cursor:pointer;
+    color:#344054;
+    font-family:Cambria,Georgia,serif;
+    font-weight:700;
+}
+
+.btn-reset:hover{
+    background:#e3e8ed;
+}
+
+/* =========================================
+   TABLE
+========================================= */
+
+.table-wrapper{
+    overflow-x:auto;
+    border:1px solid var(--border);
+    border-radius:8px;
+    background:#fff;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:900px;
+    font-family:Arial,sans-serif;
+    font-size:13px;
+}
+
+thead{
+    background:var(--navy);
+    color:#fff;
+}
+
+th{
+    padding:11px 10px;
+    text-align:left;
+    font-weight:600;
+    white-space:nowrap;
+    border-right:1px solid rgba(255,255,255,.15);
+}
+
+td{
+    padding:10px;
+    border-bottom:1px solid #e9eef3;
+    vertical-align:top;
+    color:#344054;
+}
+
+tbody tr:nth-child(even){
+    background:#f8fafc;
+}
+
+tbody tr:hover{
+    background:#edf5fb;
+}
+
+.no-data{
+    text-align:center!important;
+    padding:40px!important;
+    color:#667085!important;
+    font-family:Cambria,Georgia,serif!important;
+    font-size:15px!important;
+}
+
+.loading{
+    text-align:center;
+    padding:45px!important;
+    color:#667085;
+    font-family:Arial,sans-serif;
+}
+
+/* =========================================
+   STATUS
+========================================= */
+
+.status{
+    display:inline-block;
+    padding:4px 9px;
+    border-radius:12px;
+    font-size:11px;
+    font-weight:700;
+    white-space:nowrap;
+}
+
+.status-active{
+    background:var(--green-bg);
+    color:var(--green-text);
+}
+
+.status-open{
+    background:var(--yellow-bg);
+    color:var(--yellow-text);
+}
+
+.status-closed{
+    background:#e9eef3;
+    color:#475467;
+}
+
+.status-banned{
+    background:var(--red-bg);
+    color:var(--red-text);
+}
+
+.status-default{
+    background:#edf2f7;
+    color:#475467;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer{
+    text-align:center;
+    color:#667085;
+    font-family:Arial,sans-serif;
+    font-size:11px;
+    padding:18px 5px;
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:900px){
+
+    .container{
+        padding:14px;
+    }
+
+    .main-tab{
+        padding:10px 12px;
+        font-size:12px;
+    }
+
+    .content-card{
+        padding:15px;
+    }
+}
+
+@media(max-width:768px){
+
+    .header{
+        padding:14px;
+    }
+
+    .header h1{
+        font-size:20px;
+    }
+
+    .header p{
+        font-size:11px;
+    }
+
+    .container{
+        padding:10px;
+    }
+
+    .main-tabs{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:6px;
+    }
+
+    .main-tab{
+        width:100%;
+        min-height:42px;
+        padding:8px 6px;
+        font-size:11px;
+    }
+
+    .content-card{
+        padding:12px;
+        border-radius:9px;
+    }
+
+    .page-heading{
+        align-items:flex-start;
+    }
+
+    .page-heading h2{
+        font-size:17px;
+        line-height:1.3;
+    }
+
+    .record-count{
+        font-size:10px;
+        padding:6px 9px;
+    }
+
+    .filter-area{
+        grid-template-columns:1fr;
+    }
+
+    .sub-tabs{
+        flex-wrap:nowrap;
+        overflow-x:auto;
+        padding-bottom:6px;
+    }
+
+    .sub-tab{
+        white-space:nowrap;
+        flex-shrink:0;
+    }
+
+    .third-tabs{
+        flex-wrap:nowrap;
+        overflow-x:auto;
+    }
+
+    .third-tab{
+        white-space:nowrap;
+        flex-shrink:0;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<div class="header">
+    <div class="header-inner">
+        <h1>PHARMA REGULATORY & PRICING MASTER</h1>
+        <p>Centralized Regulatory, Notification & Pricing Information System</p>
+    </div>
+</div>
+
+
+<!-- =====================================
+     APPLICATION
+===================================== -->
+
+<div class="container">
+
+    <!-- MAIN TABS -->
+
+    <div class="main-tabs">
+
+        <button class="main-tab active"
+                onclick="openMainTab('banned',this)">
+            Banned Product
+        </button>
+
+        <button class="main-tab"
+                onclick="openMainTab('schedule',this)">
+            Schedule List
+        </button>
+
+        <button class="main-tab"
+                onclick="openMainTab('govtLetter',this)">
+            Govt. Letter Status
+        </button>
+
+        <button class="main-tab"
+                onclick="openMainTab('regulatory',this)">
+            Regulatory Amendment
+        </button>
+
+        <button class="main-tab"
+                onclick="openMainTab('nppaPricing',this)">
+            NPPA Pricing
+        </button>
+
+        <button class="main-tab"
+                onclick="openMainTab('notifications',this)">
+            Notifications
+        </button>
+
+    </div>
+
+
+    <div class="content-card">
+
+        <div class="page-heading">
+
+            <h2 id="pageTitle">
+                BANNED PRODUCT MASTER
+            </h2>
+
+            <span class="record-count" id="recordCount">
+                0 Records
+            </span>
+
+        </div>
+
+
+        <!-- LEVEL 2 TABS -->
+
+        <div id="subTabs"></div>
+
+
+        <!-- LEVEL 3 TABS -->
+
+        <div id="thirdTabs"></div>
+
+
+        <!-- SEARCH -->
+
+        <div class="filter-area">
+
+            <input
+                type="text"
+                id="searchInput"
+                class="search-box"
+                placeholder="Search..."
+                oninput="filterTable()"
+            >
+
+            <select
+                id="columnFilter"
+                class="filter-select"
+                onchange="filterTable()">
+
+                <option value="">All Records</option>
+
+            </select>
+
+            <button
+                class="btn-reset"
+                onclick="resetFilter()">
+
+                Reset
+
+            </button>
+
+        </div>
+
+
+        <!-- TABLE -->
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead id="tableHead"></thead>
+
+                <tbody id="tableBody"></tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer">
+        Pharma Regulatory & Pricing Master • Centralized Compliance Information System
+    </div>
+
+</div>
+
+
+<script>
+
+/* ============================================================
+   MASTER CONFIGURATION
+   ============================================================ */
+
+const APP_CONFIG = {
+
+
+    /* --------------------------------------------------------
+       1. BANNED PRODUCT
+    -------------------------------------------------------- */
+
+    banned: {
+
+        title: "BANNED PRODUCT MASTER",
+
+        path:
+        "data/banned-product/banned-product-master.csv"
+
+    },
+
+
+    /* --------------------------------------------------------
+       2. SCHEDULE
+    -------------------------------------------------------- */
+
+    schedule: {
+
+        title: "SCHEDULE MASTER",
+
+        path:
+        "data/schedule/schedule-master.csv"
+
+    },
+
+
+    /* --------------------------------------------------------
+       3. GOVERNMENT LETTER
+    -------------------------------------------------------- */
+
+    govtLetter: {
+
+        title: "GOVERNMENT LETTER MASTER",
+
+        subtabs: {
+
+            "All":
+            "data/government-letter/government-letter-master.csv",
+
+            "NPPA":
+            "data/government-letter/government-letter-master.csv",
+
+            "State FDA":
+            "data/government-letter/government-letter-master.csv",
+
+            "CDSCO":
+            "data/government-letter/government-letter-master.csv",
+
+            "FSSAI":
+            "data/government-letter/government-letter-master.csv"
+
+        }
+
+    },
+
+
+    /* --------------------------------------------------------
+       4. REGULATORY AMENDMENT
+    -------------------------------------------------------- */
+
+    regulatory: {
+
+        title: "REGULATORY AMENDMENT MASTER",
+
+        subtabs: {
+
+            "All":
+            "data/regulatory-amendment/regulatory-amendment-master.csv",
+
+            "NPPA":
+            "data/regulatory-amendment/regulatory-amendment-master.csv",
+
+            "State FDA":
+            "data/regulatory-amendment/regulatory-amendment-master.csv",
+
+            "CDSCO":
+            "data/regulatory-amendment/regulatory-amendment-master.csv",
+
+            "FSSAI":
+            "data/regulatory-amendment/regulatory-amendment-master.csv"
+
+        }
+
+    },
+
+
+    /* --------------------------------------------------------
+       5. NPPA PRICING
+    -------------------------------------------------------- */
+
+    nppaPricing: {
+
+        title: "NPPA PRICING",
+
+        subtabs: {
+
+            "Ceiling Price":
+            "data/nppa-pricing/ceiling-price.csv",
+
+            "Retail Price":
+            "data/nppa-pricing/retail-price.csv"
+
+        }
+
+    },
+
+
+    /* --------------------------------------------------------
+       6. NOTIFICATIONS
+    -------------------------------------------------------- */
+
+    notifications: {
+
+        title: "NOTIFICATIONS",
+
+        subtabs: {
+
+
+            /* =========================
+               CDSCO
+            ========================= */
+
+            "CDSCO": {
+
+                "Act & Rules":
+                "data/notifications/cdsco/act-rules.csv",
+
+                "Amendment":
+                "data/notifications/cdsco/amendment.csv",
+
+                "Circular":
+                "data/notifications/cdsco/circular.csv",
+
+                "Gazette Notification":
+                "data/notifications/cdsco/gazette-notification.csv",
+
+                "Public Notice":
+                "data/notifications/cdsco/public-notice.csv"
+
+            },
+
+
+            /* =========================
+               NPPA
+            ========================= */
+
+            "NPPA": {
+
+                "DPCO Act":
+                "data/notifications/nppa/dpco-act.csv",
+
+                "Amendment":
+                "data/notifications/nppa/amendment.csv",
+
+                "Gazette Notification":
+                "data/notifications/nppa/gazette-notification.csv",
+
+                "OM":
+                "data/notifications/nppa/om.csv",
+
+                "Circular":
+                "data/notifications/nppa/circular.csv"
+
+            },
+
+
+            /* =========================
+               STATE FDA
+            ========================= */
+
+            "State FDA": {
+
+                "All Notifications":
+                "data/notifications/state-fda/state-fda.csv"
+
+            },
+
+
+            /* =========================
+               FSSAI
+            ========================= */
+
+            "FSSAI": {
+
+                "Act & Rule":
+                "data/notifications/fssai/act-rule.csv",
+
+                "Regulation":
+                "data/notifications/fssai/regulation.csv",
+
+                "Notification":
+                "data/notifications/fssai/notification.csv",
+
+                "Advisory Order":
+                "data/notifications/fssai/advisory-order.csv"
+
+            },
+
+
+            /* =========================
+               LEGAL METROLOGY ACT
+            ========================= */
+
+            "Legal Metrology Act": {
+
+                "Legal Metrology Act":
+                "data/notifications/legal-metrology-act/legal-metrology-act.csv",
+
+                "Legal Metrology Numbering Rules 2011":
+                "data/notifications/legal-metrology-act/legal-metrology-numbering-rules-2011.csv",
+
+                "Legal Metrology Packaged Commodities Rules 2011":
+                "data/notifications/legal-metrology-act/legal-metrology-packaged-commodities-rules-2011.csv"
+
+            },
+
+
+            /* =========================
+               UCPMP
+            ========================= */
+
+            "UCPMP": {
+
+                "All":
+                "data/notifications/ucpmp/ucpmp.csv"
+
+            },
+
+
+            /* =========================
+               MEDICAL DEVICE
+            ========================= */
+
+            "Medical Device": {
+
+                "All":
+                "data/notifications/medical-device/medical-device.csv"
+
+            }
+
+        }
+
+    }
+
+};
+
+
+/* ============================================================
+   GLOBAL VARIABLES
+============================================================ */
+
+let currentMainTab = "banned";
+let currentSubTab = "";
+let currentThirdTab = "";
+
+let masterData = [];
+let tableHeaders = [];
+
+
+/* ============================================================
+   OPEN MAIN TAB
+============================================================ */
+
+function openMainTab(tabName, button){
+
+    currentMainTab = tabName;
+
+    currentSubTab = "";
+    currentThirdTab = "";
+
+    document
+    .querySelectorAll(".main-tab")
+    .forEach(tab => {
+        tab.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    resetSearchBox();
+
+    renderCurrentTab();
+
+}
+
+
+/* ============================================================
+   RENDER CURRENT TAB
+============================================================ */
+
+function renderCurrentTab(){
+
+    const config =
+    APP_CONFIG[currentMainTab];
+
+
+    document.getElementById("pageTitle")
+    .innerText =
+    config.title;
+
+
+    document.getElementById("subTabs")
+    .innerHTML = "";
+
+
+    document.getElementById("thirdTabs")
+    .innerHTML = "";
+
+
+    /* SIMPLE CSV TAB */
+
+    if(config.path){
+
+        loadCSV(config.path);
+
+        return;
+
+    }
+
+
+    /* SUBTAB STRUCTURE */
+
+    if(config.subtabs){
+
+        const subTabNames =
+        Object.keys(config.subtabs);
+
+
+        if(
+            !currentSubTab ||
+            !config.subtabs[currentSubTab]
+        ){
+
+            currentSubTab =
+            subTabNames[0];
+
+        }
+
+
+        renderSubTabs(subTabNames);
+
+
+        const selectedData =
+        config.subtabs[currentSubTab];
+
+
+        /* DIRECT CSV */
+
+        if(typeof selectedData === "string"){
+
+            loadCSV(selectedData);
+
+        }
+
+
+        /* THIRD LEVEL TABS */
+
+        else if(
+            typeof selectedData === "object"
+        ){
+
+            const thirdTabNames =
+            Object.keys(selectedData);
+
+
+            if(
+                !currentThirdTab ||
+                !selectedData[currentThirdTab]
+            ){
+
+                currentThirdTab =
+                thirdTabNames[0];
+
+            }
+
+
+            renderThirdTabs(thirdTabNames);
+
+
+            loadCSV(
+                selectedData[currentThirdTab]
+            );
+
+        }
+
+    }
+
+}
+
+
+/* ============================================================
+   RENDER SUB TABS
+============================================================ */
+
+function renderSubTabs(tabNames){
+
+    let html =
+    '<div class="sub-tabs">';
+
+
+    tabNames.forEach(tab => {
+
+        const activeClass =
+        tab === currentSubTab
+        ? "active"
+        : "";
+
+
+        html += `
+
+        <button
+            class="sub-tab ${activeClass}"
+            data-tab="${escapeAttribute(tab)}"
+            onclick="selectSubTab(this.dataset.tab)"
+        >
+            ${escapeHTML(tab)}
+        </button>
+
+        `;
+
+    });
+
+
+    html += "</div>";
+
+
+    document.getElementById("subTabs")
+    .innerHTML = html;
+
+}
+
+
+/* ============================================================
+   SELECT SUB TAB
+============================================================ */
+
+function selectSubTab(tabName){
+
+    currentSubTab = tabName;
+
+    currentThirdTab = "";
+
+    resetSearchBox();
+
+    renderCurrentTab();
+
+}
+
+
+/* ============================================================
+   RENDER THIRD LEVEL TABS
+============================================================ */
+
+function renderThirdTabs(tabNames){
+
+    let html =
+    '<div class="third-tabs">';
+
+
+    tabNames.forEach(tab => {
+
+        const activeClass =
+        tab === currentThirdTab
+        ? "active"
+        : "";
+
+
+        html += `
+
+        <button
+            class="third-tab ${activeClass}"
+            data-tab="${escapeAttribute(tab)}"
+            onclick="selectThirdTab(this.dataset.tab)"
+        >
+            ${escapeHTML(tab)}
+        </button>
+
+        `;
+
+    });
+
+
+    html += "</div>";
+
+
+    document.getElementById("thirdTabs")
+    .innerHTML = html;
+
+}
+
+
+/* ============================================================
+   SELECT THIRD TAB
+============================================================ */
+
+function selectThirdTab(tabName){
+
+    currentThirdTab = tabName;
+
+    resetSearchBox();
+
+    renderCurrentTab();
+
+}
+
+
+/* ============================================================
+   LOAD CSV
+============================================================ */
+
+async function loadCSV(path){
+
+    showLoading();
+
+
+    try{
+
+        const response =
+        await fetch(
+            path + "?v=" + Date.now()
+        );
+
+
+        if(!response.ok){
+
+            throw new Error(
+                "File not found"
+            );
+
+        }
+
+
+        const csvText =
+        await response.text();
+
+
+        const parsed =
+        parseCSV(csvText);
+
+
+        tableHeaders =
+        parsed.headers;
+
+
+        masterData =
+        parsed.data;
+
+
+        /* AUTHORITY FILTER */
+
+        if(
+            currentMainTab === "govtLetter" ||
+            currentMainTab === "regulatory"
+        ){
+
+            if(
+                currentSubTab !== "All"
+            ){
+
+                masterData =
+                masterData.filter(row => {
+
+                    const authority =
+                    getColumnValue(
+                        row,
+                        "Authority"
+                    );
+
+                    return normalizeText(authority)
+                    ===
+                    normalizeText(currentSubTab);
+
+                });
+
+            }
+
+        }
+
+
+        populateColumnFilter();
+
+
+        renderTable(masterData);
+
+    }
+
+
+    catch(error){
+
+        console.error(
+            "CSV Loading Error:",
+            error
+        );
+
+
+        tableHeaders = [];
+
+        masterData = [];
+
+
+        showNoData(
+            "Data file is not available yet."
+        );
+
+    }
+
+}
+
+
+/* ============================================================
+   CSV PARSER
+============================================================ */
+
+function parseCSV(text){
+
+    text =
+    text.replace(/^\uFEFF/, "");
+
+
+    const rows = [];
+
+    let row = [];
+
+    let cell = "";
+
+    let inQuotes = false;
+
+
+    for(
+        let i = 0;
+        i < text.length;
+        i++
+    ){
+
+        const char =
+        text[i];
+
+
+        const nextChar =
+        text[i + 1];
+
+
+        /* ESCAPED QUOTE */
+
+        if(
+            char === '"' &&
+            inQuotes &&
+            nextChar === '"'
+        ){
+
+            cell += '"';
+
+            i++;
+
+        }
+
+
+        /* NORMAL QUOTE */
+
+        else if(char === '"'){
+
+            inQuotes =
+            !inQuotes;
+
+        }
+
+
+        /* COMMA */
+
+        else if(
+            char === "," &&
+            !inQuotes
+        ){
+
+            row.push(
+                cell.trim()
+            );
+
+            cell = "";
+
+        }
+
+
+        /* NEW LINE */
+
+        else if(
+            (char === "\n" ||
+             char === "\r") &&
+            !inQuotes
+        ){
+
+            if(
+                char === "\r" &&
+                nextChar === "\n"
+            ){
+
+                i++;
+
+            }
+
+
+            row.push(
+                cell.trim()
+            );
+
+
+            if(
+                row.some(
+                    value => value !== ""
+                )
+            ){
+
+                rows.push(row);
+
+            }
+
+
+            row = [];
+
+            cell = "";
+
+        }
+
+
+        /* NORMAL CHARACTER */
+
+        else{
+
+            cell += char;
+
+        }
+
+    }
+
+
+    /* LAST ROW */
+
+    if(
+        cell.length > 0 ||
+        row.length > 0
+    ){
+
+        row.push(
+            cell.trim()
+        );
+
+        rows.push(row);
+
+    }
+
+
+    if(rows.length === 0){
+
+        return {
+            headers: [],
+            data: []
+        };
+
+    }
+
+
+    const headers =
+    rows[0].map(header =>
+        header.trim()
+    );
+
+
+    const data =
+    rows
+    .slice(1)
+    .filter(row =>
+        row.some(
+            cell => cell !== ""
+        )
+    )
+    .map(row => {
+
+        const object = {};
+
+
+        headers.forEach(
+            (header, index) => {
+
+                object[header] =
+                row[index] || "";
+
+            }
+        );
+
+
+        return object;
+
+    });
+
+
+    return {
+        headers: headers,
+        data: data
+    };
+
+}
+
+
+/* ============================================================
+   POPULATE COLUMN FILTER
+============================================================ */
+
+function populateColumnFilter(){
+
+    const select =
+    document.getElementById(
+        "columnFilter"
+    );
+
+
+    select.innerHTML =
+    '<option value="">All Columns</option>';
+
+
+    tableHeaders.forEach(header => {
+
+        select.innerHTML +=
+        `<option value="${escapeAttribute(header)}">
+            ${escapeHTML(header)}
+        </option>`;
+
+    });
+
+}
+
+
+/* ============================================================
+   RENDER TABLE
+============================================================ */
+
+function renderTable(data){
+
+    const head =
+    document.getElementById(
+        "tableHead"
+    );
+
+
+    const body =
+    document.getElementById(
+        "tableBody"
+    );
+
+
+    /* NO HEADER */
+
+    if(tableHeaders.length === 0){
+
+        head.innerHTML = "";
+
+        body.innerHTML = `
+            <tr>
+                <td class="no-data">
+                    No data available
+                </td>
+            </tr>
+        `;
+
+        updateRecordCount(0);
+
+        return;
+
+    }
+
+
+    /* TABLE HEADER */
+
+    head.innerHTML = `
+        <tr>
+            ${tableHeaders
+            .map(header =>
+                `<th>${escapeHTML(header)}</th>`
+            )
+            .join("")}
+        </tr>
+    `;
+
+
+    /* NO DATA */
+
+    if(data.length === 0){
+
+        body.innerHTML = `
+            <tr>
+                <td
+                    colspan="${tableHeaders.length}"
+                    class="no-data"
+                >
+                    No records found
+                </td>
+            </tr>
+        `;
+
+
+        updateRecordCount(0);
+
+        return;
+
+    }
+
+
+    /* TABLE ROWS */
+
+    body.innerHTML =
+    data.map(row => {
+
+        let rowHTML = "<tr>";
+
+
+        tableHeaders.forEach(header => {
+
+            let value =
+            row[header] || "";
+
+
+            if(
+                normalizeText(header) === "status"
+            ){
+
+                value =
+                formatStatus(value);
+
+            }
+
+            else if(
+                isLink(value)
+            ){
+
+                value = `
+                    <a
+                        href="${escapeAttribute(value)}"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        View Document
+                    </a>
+                `;
+
+            }
+
+            else{
+
+                value =
+                escapeHTML(value);
+
+            }
+
+
+            rowHTML += `
+                <td>${value}</td>
+            `;
+
+        });
+
+
+        rowHTML += "</tr>";
+
+
+        return rowHTML;
+
+    }).join("");
+
+
+    updateRecordCount(
+        data.length
+    );
+
+}
+
+
+/* ============================================================
+   STATUS FORMAT
+============================================================ */
+
+function formatStatus(status){
+
+    const value =
+    String(status || "");
+
+
+    const normalized =
+    value.toLowerCase().trim();
+
+
+    let className =
+    "status-default";
+
+
+    if(
+        normalized.includes("banned")
+    ){
+
+        className =
+        "status-banned";
+
+    }
+
+    else if(
+        normalized.includes("open")
+    ){
+
+        className =
+        "status-open";
+
+    }
+
+    else if(
+        normalized.includes("closed")
+    ){
+
+        className =
+        "status-closed";
+
+    }
+
+    else if(
+        normalized.includes("active")
+    ){
+
+        className =
+        "status-active";
+
+    }
+
+
+    return `
+        <span class="status ${className}">
+            ${escapeHTML(value)}
+        </span>
+    `;
+
+}
+
+
+/* ============================================================
+   FILTER TABLE
+============================================================ */
+
+function filterTable(){
+
+    const keyword =
+    document.getElementById(
+        "searchInput"
+    )
+    .value
+    .toLowerCase()
+    .trim();
+
+
+    const selectedColumn =
+    document.getElementById(
+        "columnFilter"
+    )
+    .value;
+
+
+    let filteredData =
+    [...masterData];
+
+
+    if(keyword){
+
+        filteredData =
+        filteredData.filter(row => {
+
+
+            if(selectedColumn){
+
+                return String(
+                    row[selectedColumn] || ""
+                )
+                .toLowerCase()
+                .includes(keyword);
+
+            }
+
+
+            return Object
+            .values(row)
+            .some(value =>
+
+                String(value)
+                .toLowerCase()
+                .includes(keyword)
+
+            );
+
+        });
+
+    }
+
+
+    renderTable(
+        filteredData
+    );
+
+}
+
+
+/* ============================================================
+   RESET FILTER
+============================================================ */
+
+function resetFilter(){
+
+    resetSearchBox();
+
+    renderTable(
+        masterData
+    );
+
+}
+
+
+function resetSearchBox(){
+
+    const search =
+    document.getElementById(
+        "searchInput"
+    );
+
+    const column =
+    document.getElementById(
+        "columnFilter"
+    );
+
+
+    if(search){
+        search.value = "";
+    }
+
+
+    if(column){
+        column.value = "";
+    }
+
+}
+
+
+/* ============================================================
+   GET COLUMN VALUE
+============================================================ */
+
+function getColumnValue(
+    row,
+    columnName
+){
+
+    const key =
+    Object.keys(row)
+    .find(key =>
+
+        normalizeText(key)
+        ===
+        normalizeText(columnName)
+
+    );
+
+
+    return key
+    ? row[key]
+    : "";
+
+}
+
+
+/* ============================================================
+   NORMALIZE TEXT
+============================================================ */
+
+function normalizeText(value){
+
+    return String(value || "")
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, " ");
+
+}
+
+
+/* ============================================================
+   RECORD COUNT
+============================================================ */
+
+function updateRecordCount(count){
+
+    document.getElementById(
+        "recordCount"
+    )
+    .innerText =
+    count + (
+        count === 1
+        ? " Record"
+        : " Records"
+    );
+
+}
+
+
+/* ============================================================
+   SHOW LOADING
+============================================================ */
+
+function showLoading(){
+
+    document.getElementById(
+        "tableHead"
+    ).innerHTML = "";
+
+
+    document.getElementById(
+        "tableBody"
+    ).innerHTML = `
+        <tr>
+            <td class="loading">
+                Loading data...
+            </td>
+        </tr>
+    `;
+
+
+    document.getElementById(
+        "recordCount"
+    ).innerText =
+    "Loading...";
+
+}
+
+
+/* ============================================================
+   SHOW NO DATA
+============================================================ */
+
+function showNoData(message){
+
+    document.getElementById(
+        "tableHead"
+    ).innerHTML = "";
+
+
+    document.getElementById(
+        "tableBody"
+    ).innerHTML = `
+        <tr>
+            <td class="no-data">
+                ${escapeHTML(message)}
+            </td>
+        </tr>
+    `;
+
+
+    updateRecordCount(0);
+
+}
+
+
+/* ============================================================
+   CHECK URL
+============================================================ */
+
+function isLink(value){
+
+    return /^https?:\/\/.+/i
+    .test(
+        String(value || "").trim()
+    );
+
+}
+
+
+/* ============================================================
+   HTML ESCAPE
+============================================================ */
+
+function escapeHTML(value){
+
+    return String(value ?? "")
+
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+
+}
+
+
+function escapeAttribute(value){
+
+    return String(value ?? "")
+
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+
+}
+
+
+/* ============================================================
+   INITIAL LOAD
+============================================================ */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        renderCurrentTab();
+
+    }
+);
+
+</script>
+
+</body>
+</html>
+```
