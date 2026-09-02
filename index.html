@@ -1,1 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#12395f">
 
+<title>Pharma Regulatory & Pricing Master</title>
+
+<style>
+:root{
+    --navy:#12395f;
+    --navy-dark:#092a49;
+    --blue:#1e5b8f;
+    --light-blue:#edf5fb;
+    --border:#d7e0e9;
+    --bg:#f4f7fa;
+    --white:#ffffff;
+    --text:#1d2939;
+    --muted:#667085;
+    --green-bg:#e8f5ec;
+    --green-text:#18713c;
+    --red-bg:#fdeaea;
+    --red-text:#b42318;
+    --yellow-bg:#fff4d6;
+    --yellow-text:#8a5a00;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html,body{
+    margin:0;
+    padding:0;
+    min-height:100%;
+}
+
+body{
+    font-family:Cambria, Georgia, serif;
+    background:var(--bg);
+    color:var(--text);
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header{
+    background:#fff;
+    border-bottom:3px solid var(--navy);
+    padding:18px 25px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.header-inner{
+    max-width:1500px;
+    margin:auto;
+}
+
+.header h1{
+    margin:0;
+    color:var(--navy);
+    font-size:25px;
+    font-weight:700;
+    letter-spacing:.3px;
+}
+
+.header p{
+    margin:5px 0 0;
+    color:var(--muted);
+    font-family:Arial,sans-serif;
+    font-size:12px;
+}
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.container{
+    max-width:1500px;
+    margin:auto;
+    padding:20px;
+}
+
+/* =========================================
+   MAIN TABS
+========================================= */
+
+.main-tabs{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:18px;
+}
+
+.main-tab{
+    border:1px solid var(--border);
+    background:#fff;
+    color:var(--navy);
+    padding:11px 18px;
+    border-radius:8px;
+    cursor:pointer;
+    font-family:Cambria,Georgia,serif;
+    font-size:14px;
+    font-weight:700;
+    transition:all .2s ease;
+}
+
+.main-tab:hover{
+    background:#edf4fa;
+}
+
+.main-tab.active{
+    background:var(--navy);
+    color:#fff;
+    border-color:var(--navy);
+}
+
+/* =========================================
+   CONTENT CARD
+========================================= */
+
+.content-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:20px;
+    box-shadow:0 3px 12px rgba(0,0,0,.04);
+    min-height:500px;
+}
+
+.page-heading{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    padding-bottom:13px;
+    border-bottom:1px solid var(--border);
+}
+
+.page-heading h2{
+    margin:0;
+    color:var(--navy);
+    font-size:21px;
+    font-weight:700;
+}
+
+.record-count{
+    background:var(--light-blue);
+    color:var(--navy);
+    border-radius:20px;
+    padding:7px 13px;
+    font-family:Arial,sans-serif;
+    font-size:12px;
+    font-weight:700;
+    white-space:nowrap;
+}
+
+/* =========================================
+   SECOND LEVEL TABS
+========================================= */
+
+.sub-tabs{
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
+    margin-top:18px;
+    margin-bottom:12px;
+}
+
+.sub-tab{
+    padding:9px 15px;
+    background:#f6f8fa;
+    border:1px solid var(--border);
+    border-radius:7px;
+    color:#344054;
+    cursor:pointer;
+    font-family:Cambria,Georgia,serif;
+    font-weight:700;
+    font-size:13px;
+    transition:.2s;
+}
+
+.sub-tab:hover{
+    background:#eef4f9;
+}
+
+.sub-tab.active{
+    background:#dfeefa;
+    color:var(--navy);
+    border-color:#9ebcd6;
+}
+
+/* =========================================
+   THIRD LEVEL TABS
+========================================= */
+
+.third-tabs{
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
+    margin:12px 0 18px;
+    padding:12px;
+    background:#f7f9fb;
+    border:1px solid var(--border);
+    border-left:4px solid var(--navy);
+    border-radius:7px;
+}
+
+.third-tab{
+    padding:8px 13px;
+    border:1px solid var(--border);
+    border-radius:6px;
+    background:#fff;
+    cursor:pointer;
+    color:#344054;
+    font-family:Cambria,Georgia,serif;
+    font-size:13px;
+    font-weight:700;
+    transition:.2s;
+}
+
+.third-tab:hover{
+    background:#edf4fa;
+}
+
+.third-tab.active{
+    background:var(--navy);
+    color:#fff;
+    border-color:var(--navy);
+}
+
+/* =========================================
+   FILTER
+========================================= */
+
+.filter-area{
+    display:grid;
+    grid-template-columns:2fr 1fr auto;
+    gap:10px;
+    margin-bottom:18px;
+}
+
+.search-box,
+.filter-select{
+    width:100%;
+    padding:11px 13px;
+    border:1px solid #cbd5e1;
+    border-radius:7px;
+    background:#fff;
+    color:#344054;
+    font-family:Arial,sans-serif;
+    font-size:13px;
+    outline:none;
+}
+
+.search-box:focus,
+.filter-select:focus{
+    border-color:var(--blue);
+}
+
+.btn-reset{
+    padding:10px 20px;
+    background:#eef1f4;
+    border:1px solid var(--border);
+    border-radius:7px;
+    cursor:pointer;
+    color:#344054;
+    font-family:Cambria,Georgia,serif;
+    font-weight:700;
+}
+
+.btn-reset:hover{
+    background:#e3e8ed;
+}
+
+/* =========================================
+   TABLE
+========================================= */
+
+.table-wrapper{
+    overflow-x:auto;
+    border:1px solid var(--border);
+    border-radius:8px;
+    background:#fff;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:max-content;
+    font-family:Arial,sans-serif;
+    font-size:13px;
+}
+
+thead{
+    background:var(--navy);
+    color:#fff;
+}
+
+th{
+    padding:11px 10px;
+    text-align:left;
+    font-weight:600;
+    white-space:nowrap;
+    border-right:1px solid rgba(255,255,255,.15);
+}
+
+td{
+    padding:10px;
+    border-bottom:1px solid #e9eef3;
+    vertical-align:top;
+    color:#344054;
+}
+
+tbody tr:nth-child(even){
+    background:#f8fafc;
+}
+
+tbody tr:hover{
+    background:#edf5fb;
+}
+
+.no-data{
+    text-align:center!important;
+    padding:40px!important;
+    color:#667085!important;
+    font-family:Cambria,Georgia,serif!important;
+    font-size:15px!important;
+}
+
+.loading{
+    text-align:center;
+    padding:45px!important;
+    color:#667085;
+    font-family:Arial,sans-serif;
+}
+
+/* =========================================
+   STATUS
+========================================= */
+
+.status{
+    display:inline-block;
+    padding:4px 9px;
+    border-radius:12px;
+    font-size:11px;
+    font-weight:700;
+    white-space:nowrap;
+}
+
+.status-active{
+    background:var(--green-bg);
+    color:var(--green-text);
+}
+
+.status-open{
+    background:var(--yellow-bg);
+    color:var(--yellow-text);
+}
+
+.status-closed{
+    background:#e9eef3;
+    color:#475467;
+}
+
+.status-banned{
+    background:var(--red-bg);
+    color:var(--red-text);
+}
+
+.status-default{
+    background:#edf2f7;
+    color:#475467;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer{
+    text-align:center;
+    color:#667085;
+    font-family:Arial,sans-serif;
+    font-size:11px;
+    padding:18px 5px;
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:900px){
+
+    .container{
+        padding:14px;
+    }
+
+    .main-tab{
+        padding:10px 12px;
+        font-size:12px;
+    }
+
+    .content-card{
+        padding:15px;
+    }
+}
+
+@media(max-width:768px){
+
+    .header{
+        padding:14px;
+    }
+
+    .header h1{
+        font-size:20px;
+    }
+
+    .header p{
+        font-size:11px;
+    }
+
+    .container{
+        padding:10px;
+    }
+
+    .main-tabs{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:6px;
+    }
+
+    .main-tab{
+        width:100%;
+        min-height:42px;
+        padding:8px 6px;
+        font-size:11px;
+    }
+
+    .content-card{
+        padding:12px;
+        border-radius:9px;
+    }
+
+    .page-heading{
+        align-items:flex-start;
+    }
+
+    .page-heading h2{
+        font-size:17px;
+        line-height:1.3;
+    }
+
+    .record-count{
+        font-size:10px;
+        padding:6px 9px;
+    }
+
+    .filter-area{
+        grid-template-columns:1fr;
+    }
+
+    .sub-tabs{
+        flex-wrap:nowrap;
+        overflow-x:auto;
+        padding-bottom:6px;
+    }
+
+    .sub-tab{
+        white-space:nowrap;
+        flex-shrink:0;
+    }
+
+    .third-tabs{
+        flex-wrap:nowrap;
+        overflow-x:auto;
+    }
+
+    .third-tab{
+        white-space:nowrap;
+        flex-shrink:0;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<div class="header">
+    <div class="header-inner">
+        <h1>PHARMA REGULATORY & PRICING MASTER</h1>
+        <p>Centralized Regulatory, Notification & Pricing Information System</p>
+    </div>
+</div>
+
+
+
+<!-- =====================================
+     APPLICATION
+===================================== -->
+<div class="container">
+  <div class="main-tabs" id="mainTabs"></div>
+  <div class="content-card">
+    <div class="page-heading">
+      <h2 id="pageTitle">BANNED PRODUCT MASTER</h2>
+      <span class="record-count" id="recordCount">0 Records</span>
+    </div>
+    <div id="dynamicTabs"></div>
+    <div class="filter-area" id="filterArea">
+      <!-- Default filter controls for all existing tabs -->
+      <input type="text" id="searchInput" class="search-box" placeholder="Search..." oninput="filterTable()">
+      <select id="columnFilter" class="filter-select" onchange="filterTable()"><option value="">All Records</option></select>
+
+      <!-- Banned Product Master specific filters: shown automatically only for Banned Product tab -->
+      <input type="text" id="bannedProductSearch" class="search-box banned-filter" placeholder="Search by Product Name..." oninput="filterTable()" style="display:none">
+      <input type="text" id="bannedGenericSearch" class="search-box banned-filter" placeholder="Search by Generic Name..." oninput="filterTable()" style="display:none">
+      <select id="bannedYearFilter" class="filter-select banned-filter" onchange="filterTable()" style="display:none">
+        <option value="">All Years</option>
+      </select>
+
+      <button class="btn-reset" onclick="resetFilter()">Reset</button>
+    </div>
+    <div class="table-wrapper"><table><thead id="tableHead"></thead><tbody id="tableBody"></tbody></table></div>
+  </div>
+  <div class="footer">Pharma Regulatory & Pricing Master • Centralized Compliance Information System</div>
+</div>
+
+<script>
+/* ============================================================
+   PHARMA REGULATORY & PRICING MASTER
+   UPGRADED VERSION
+   - Existing CSV/table/filter/authority/status logic retained
+   - Unlimited tab and sub-tab levels
+   - New GitHub folders auto-detected as new tabs
+   - New CSV files auto-detected
+   - Existing configured tabs remain available
+   ============================================================ */
+
+/* OPTIONAL: Keep blank when hosted on GitHub Pages; repository is auto-detected.
+   If auto-detection is not possible, fill these values. */
+const GITHUB_OWNER = "jituduttajd-cmyk";
+const GITHUB_REPO = "PHARMA-REGULATORY-MASTER";
+const GITHUB_BRANCH = "main";
+
+/* EXISTING MASTER STRUCTURE — retained */
+const APP_CONFIG = {
+  banned:{title:"BANNED PRODUCT MASTER",path:"data/banned-product/1. Banned Product Master.csv"},
+  schedule:{title:"SCHEDULE MASTER",path:"data/schedule/schedule-master.csv"},
+  govtLetter:{title:"GOVERNMENT LETTER MASTER",subtabs:{
+    "All":"data/government-letter/government-letter-master.csv",
+    "NPPA":"data/government-letter/government-letter-master.csv",
+    "State FDA":"data/government-letter/government-letter-master.csv",
+    "CDSCO":"data/government-letter/government-letter-master.csv",
+    "FSSAI":"data/government-letter/government-letter-master.csv"
+  }},
+  regulatory:{title:"REGULATORY AMENDMENT MASTER",subtabs:{
+    "All":"data/regulatory-amendment/regulatory-amendment-master.csv",
+    "NPPA":"data/regulatory-amendment/regulatory-amendment-master.csv",
+    "State FDA":"data/regulatory-amendment/regulatory-amendment-master.csv",
+    "CDSCO":"data/regulatory-amendment/regulatory-amendment-master.csv",
+    "FSSAI":"data/regulatory-amendment/regulatory-amendment-master.csv"
+  }},
+  nppaPricing:{title:"NPPA PRICING",subtabs:{
+    "Ceiling Price":"data/nppa-pricing/ceiling-price.csv",
+    "Retail Price":"data/nppa-pricing/retail-price.csv"
+  }},
+  notifications:{title:"NOTIFICATIONS",subtabs:{
+    "CDSCO":{"Act & Rules":"data/notifications/cdsco/act-rules.csv","Amendment":"data/notifications/cdsco/amendment.csv","Circular":"data/notifications/cdsco/circular.csv","Gazette Notification":"data/notifications/cdsco/gazette-notification.csv","Public Notice":"data/notifications/cdsco/public-notice.csv"},
+    "NPPA":{"DPCO Act":"data/notifications/nppa/dpco-act.csv","Amendment":"data/notifications/nppa/amendment.csv","Gazette Notification":"data/notifications/nppa/gazette-notification.csv","OM":"data/notifications/nppa/om.csv","Circular":"data/notifications/nppa/circular.csv"},
+    "State FDA":{"All Notifications":"data/notifications/state-fda/state-fda.csv"},
+    "FSSAI":{"Act & Rule":"data/notifications/fssai/act-rule.csv","Regulation":"data/notifications/fssai/regulation.csv","Notification":"data/notifications/fssai/notification.csv","Advisory Order":"data/notifications/fssai/advisory-order.csv"},
+    "Legal Metrology Act":{"Legal Metrology Act":"data/notifications/legal-metrology-act/legal-metrology-act.csv","Legal Metrology Numbering Rules 2011":"data/notifications/legal-metrology-act/legal-metrology-numbering-rules-2011.csv","Legal Metrology Packaged Commodities Rules 2011":"data/notifications/legal-metrology-act/legal-metrology-packaged-commodities-rules-2011.csv"},
+    "UCPMP":{"All":"data/notifications/ucpmp/ucpmp.csv","Act & Rule":"data/notifications/ucpmp/Act & Rule.csv","Amendment":"data/notifications/ucpmp/Amendment.csv"},
+    "Medical Device":{"All":"data/notifications/medical-device/medical-device.csv","Act & Rule":"data/notifications/medical-device/Act & Rule.csv","Amendment":"data/notifications/medical-device/Amendment.csv"},
+    Other:{"All":"data/notifications/Other Documents.csv"},  
+  }}
+};
+
+let currentMainTab="banned";
+let currentSelections=[];
+let masterData=[], tableHeaders=[];
+let dynamicTree={}, repoInfo=null;
+
+/* ---------- repository detection ---------- */
+function getRepoInfo(){
+  if(GITHUB_OWNER && GITHUB_REPO) return {owner:GITHUB_OWNER,repo:GITHUB_REPO,branch:GITHUB_BRANCH};
+  const host=location.hostname, parts=location.pathname.split("/").filter(Boolean);
+  if(host.endsWith(".github.io")){
+    const owner=host.split(".")[0];
+    if(parts.length) return {owner,repo:parts[0],branch:GITHUB_BRANCH};
+  }
+  return null;
+}
+function apiUrl(path){
+  if(!repoInfo) return null;
+  return `https://api.github.com/repos/${encodeURIComponent(repoInfo.owner)}/${encodeURIComponent(repoInfo.repo)}/contents/${encodePath(path)}?ref=${encodeURIComponent(repoInfo.branch)}`;
+}
+
+/* ---------- convert old config into unlimited tree ---------- */
+function configToTree(config){
+  const node={title:config.title||"",children:{},file:config.path||""};
+  if(config.subtabs) Object.entries(config.subtabs).forEach(([name,val])=>{
+    node.children[name]=typeof val==="string"?{title:name,file:val,children:{}}:objectToNode(name,val);
+  });
+  return node;
+}
+function objectToNode(name,obj){
+  const node={title:name,children:{},file:""};
+  Object.entries(obj).forEach(([k,v])=>{
+    node.children[k]=typeof v==="string"?{title:k,file:v,children:{}}:objectToNode(k,v);
+  });
+  return node;
+}
+
+/* ---------- auto discover all GitHub folders and CSV files ---------- */
+async function discoverFolder(path){
+  const url=apiUrl(path);
+  if(!url) return {children:{},file:""};
+  try{
+    const r=await fetch(url);
+    if(!r.ok) return {children:{},file:""};
+    const items=await r.json(), node={children:{},file:""};
+    for(const item of items){
+      if(item.type==="dir"){
+        node.children[displayName(item.name)]={title:displayName(item.name),path:item.path,...await discoverFolder(item.path)};
+      }else if(item.type==="file" && /\.csv$/i.test(item.name)){
+        const name=displayName(item.name.replace(/\.csv$/i,""));
+        if(!node.file) node.file=item.path;
+        else node.children[name]={title:name,file:item.path,children:{}};
+      }
+    }
+    return node;
+  }catch(e){ console.warn("Discovery skipped:",path,e); return {children:{},file:""}; }
+}
+function displayName(s){return String(s).replace(/[-_]+/g," ").replace(/\b\w/g,c=>c.toUpperCase());}
+
+/* Merge static structure with auto-detected structure; auto additions never remove existing */
+function mergeTrees(base, discovered){
+  const out={...base,children:{...(base.children||{})}};
+  if(!out.file && discovered.file) out.file=discovered.file;
+  Object.entries(discovered.children||{}).forEach(([name,node])=>{
+    const match=Object.keys(out.children).find(k=>normalizeText(k)===normalizeText(name));
+    if(match) out.children[match]=mergeTrees(out.children[match],node);
+    else out.children[name]=node;
+  });
+  return out;
+}
+
+/* ---------- initialization ---------- */
+document.addEventListener("DOMContentLoaded",async()=>{
+  repoInfo=getRepoInfo();
+  Object.entries(APP_CONFIG).forEach(([key,c])=>dynamicTree[key]=configToTree(c));
+  renderMainTabs();
+  showLoading();
+  if(repoInfo){
+    await Promise.all(Object.keys(APP_CONFIG).map(async key=>{
+      const rootPath=getRootFolder(APP_CONFIG[key]);
+      if(rootPath){
+        const discovered=await discoverFolder(rootPath);
+        dynamicTree[key]=mergeTrees(dynamicTree[key],discovered);
+      }
+    }));
+  }
+  openMainTab("banned",document.querySelector('[data-main="banned"]'));
+});
+
+/* ---------- find the true common root folder ----------
+   IMPORTANT:
+   Do not use the first configured CSV file to determine the root.
+   For Notifications, the first file may be:
+   data/notifications/cdsco/act-rules.csv
+   which would incorrectly make "cdsco" the discovery root and expose
+   Act & Rules, Amendment, etc. directly under Notifications.
+
+   This function collects ALL configured file paths and finds their
+   deepest common directory. Therefore Notifications correctly resolves
+   to data/notifications and CDSCO remains the parent sub-tab.
+--------------------------------------------------------- */
+function getRootFolder(c){
+  const paths=[];
+
+  function collect(value){
+    if(typeof value==="string"){
+      paths.push(value);
+      return;
+    }
+    if(!value || typeof value!=="object") return;
+    Object.values(value).forEach(collect);
+  }
+
+  if(c.path) paths.push(c.path);
+  if(c.subtabs) collect(c.subtabs);
+
+  if(!paths.length) return "";
+
+  const directories=paths.map(path=>{
+    const parts=String(path).split("/");
+    parts.pop(); /* remove filename */
+    return parts;
+  });
+
+  let common=[...directories[0]];
+
+  for(let i=1;i<directories.length;i++){
+    let j=0;
+    while(
+      j<common.length &&
+      j<directories[i].length &&
+      common[j]===directories[i][j]
+    ){
+      j++;
+    }
+    common=common.slice(0,j);
+    if(!common.length) break;
+  }
+
+  return common.join("/");
+}
+
+/* ---------- main tabs ---------- */
+function renderMainTabs(){
+  document.getElementById("mainTabs").innerHTML=Object.entries(APP_CONFIG).map(([key,c])=>
+    `<button class="main-tab ${key===currentMainTab?"active":""}" data-main="${escapeAttribute(key)}" onclick="openMainTab('${escapeJS(key)}',this)">${escapeHTML(mainTitle(key))}</button>`).join("");
+}
+function mainTitle(key){
+  return {"banned":"Banned Product","schedule":"Schedule List","govtLetter":"Govt. Letter Status","regulatory":"Regulatory Amendment","nppaPricing":"NPPA Pricing","notifications":"Notifications"}[key]||APP_CONFIG[key].title;
+}
+function openMainTab(tabName,button){
+  currentMainTab=tabName; currentSelections=[];
+  document.querySelectorAll(".main-tab").forEach(x=>x.classList.toggle("active",x.dataset.main===tabName));
+  document.getElementById("pageTitle").innerText=APP_CONFIG[tabName].title;
+  resetSearchBox();
+  toggleFilterControls();
+  renderCurrentTab();
+}
+
+/* ---------- unlimited tab rendering ---------- */
+function getCurrentNode(){
+  let node=dynamicTree[currentMainTab];
+  for(const name of currentSelections){
+    if(node.children?.[name]) node=node.children[name]; else break;
+  }
+  return node;
+}
+function renderCurrentTab(){
+  const root=dynamicTree[currentMainTab];
+  let node=root, html="";
+  currentSelections.forEach((selected,level)=>{
+    html+=renderLevel(node,selected,level);
+    node=node.children[selected];
+  });
+  if(node?.children && Object.keys(node.children).length) html+=renderLevel(node,"",currentSelections.length);
+  document.getElementById("dynamicTabs").innerHTML=html;
+  const current=getCurrentNode();
+  if(current?.file) loadCSV(current.file);
+  else if(current?.children && Object.keys(current.children).length) showNoData("Please select a tab or sub-tab.");
+  else showNoData("Data file is not available yet.");
+}
+function renderLevel(node,selected,level){
+  const cls=level%2===0?"sub-tab":"third-tab", wrap=level%2===0?"sub-tabs":"third-tabs";
+  return `<div class="${wrap}">${Object.keys(node.children).map(name=>
+    `<button class="${cls} ${name===selected?"active":""}" data-level="${level}" data-name="${escapeAttribute(name)}" onclick="selectDynamicTab(Number(this.dataset.level),this.dataset.name)">${escapeHTML(name)}</button>`).join("")}</div>`;
+}
+function selectDynamicTab(level,name){
+  currentSelections=currentSelections.slice(0,level);
+  currentSelections.push(name);
+  resetSearchBox(); renderCurrentTab();
+}
+
+/* ---------- FILTER UI MODE SWITCH ---------- */
+function toggleFilterControls(){
+  const isBanned=currentMainTab==="banned";
+  const normalSearch=document.getElementById("searchInput");
+  const normalColumn=document.getElementById("columnFilter");
+  const bannedFilters=document.querySelectorAll(".banned-filter");
+
+  if(normalSearch) normalSearch.style.display=isBanned?"none":"";
+  if(normalColumn) normalColumn.style.display=isBanned?"none":"";
+  bannedFilters.forEach(el=>el.style.display=isBanned?"":"none");
+}
+
+/* ---------- CSV loading: existing logic retained ---------- */
+/* ---------- GitHub RAW file URL ---------- */
+function rawFileUrl(path){
+  if(repoInfo){
+    return `https://raw.githubusercontent.com/${encodeURIComponent(repoInfo.owner)}/${encodeURIComponent(repoInfo.repo)}/${encodeURIComponent(repoInfo.branch)}/${encodePath(path)}`;
+  }
+  return path;
+}
+
+/* ---------- CSV loading ----------
+   Files are loaded directly from the GitHub repository using the RAW URL.
+   This is essential because paths such as data/banned-product/... are not
+   automatically available as relative files when the app is hosted elsewhere.
+--------------------------------------------------------- */
+async function loadCSV(path){
+  showLoading();
+  try{
+    const url=rawFileUrl(path) + "?v=" + Date.now();
+    const response=await fetch(url);
+    if(!response.ok) throw new Error(`File not found: ${path} (HTTP ${response.status})`);
+    const parsed=parseCSV(await response.text());
+    tableHeaders=parsed.headers; masterData=parsed.data;
+    if(currentMainTab==="govtLetter"||currentMainTab==="regulatory"){
+      const authority=currentSelections[0]||"All";
+      if(authority!=="All") masterData=masterData.filter(row=>normalizeText(getColumnValue(row,"Authority"))===normalizeText(authority));
+    }
+    populateColumnFilter();
+    /* Banned Product must display ALL CSV records by default */
+    if(currentMainTab==="banned") filterTable();
+    else renderTable(masterData);
+  }catch(error){
+    console.error("CSV Loading Error:",error); tableHeaders=[]; masterData=[]; showNoData("Data file is not available yet.");
+  }
+}
+
+/* ---------- existing CSV parser ---------- */
+function parseCSV(text){
+  text=text.replace(/^\uFEFF/,""); const rows=[]; let row=[],cell="",inQuotes=false;
+  for(let i=0;i<text.length;i++){const char=text[i],next=text[i+1];
+    if(char==='"'&&inQuotes&&next==='"'){cell+='"';i++;}
+    else if(char==='"'){inQuotes=!inQuotes;}
+    else if(char===","&&!inQuotes){row.push(cell.trim());cell="";}
+    else if((char==="\n"||char==="\r")&&!inQuotes){if(char==="\r"&&next==="\n")i++;row.push(cell.trim());if(row.some(v=>v!==""))rows.push(row);row=[];cell="";}
+    else cell+=char;
+  }
+  if(cell.length||row.length){row.push(cell.trim());rows.push(row);}
+  if(!rows.length)return {headers:[],data:[]};
+  const headers=rows[0].map(h=>h.trim());
+  const data=rows.slice(1).filter(r=>r.some(c=>c!=="")).map(r=>{const o={};headers.forEach((h,i)=>o[h]=r[i]||"");return o;});
+  return {headers,data};
+}
+function populateColumnFilter(){
+  const select=document.getElementById("columnFilter");
+  select.innerHTML='<option value="">All Columns</option>';
+  tableHeaders.forEach(h=>select.innerHTML+=`<option value="${escapeAttribute(h)}">${escapeHTML(h)}</option>`);
+
+  updateBannedProductFilters();
+}
+
+/* ---------- BANNED PRODUCT MASTER FILTER CONTROLS ----------
+   Product Name and Generic Name are searched independently.
+   Year list is generated automatically from the Notification Date
+   column, so newly added years in the CSV appear automatically.
+------------------------------------------------------------ */
+function updateBannedProductFilters(){
+  const isBanned=currentMainTab==="banned";
+
+  const normalSearch=document.getElementById("searchInput");
+  const normalColumn=document.getElementById("columnFilter");
+  const bannedFilters=document.querySelectorAll(".banned-filter");
+
+  if(normalSearch) normalSearch.style.display=isBanned?"none":"";
+  if(normalColumn) normalColumn.style.display=isBanned?"none":"";
+  bannedFilters.forEach(el=>el.style.display=isBanned?"":"none");
+
+  if(!isBanned) return;
+
+  const yearSelect=document.getElementById("bannedYearFilter");
+  if(!yearSelect) return;
+
+  const currentValue=yearSelect.value;
+  const years=[...new Set(masterData
+    .map(row=>extractYear(getColumnValueByAliases(row,["Notification Date","NotificationDate","Date of Notification"])))
+    .filter(Boolean))]
+    .sort((a,b)=>Number(b)-Number(a));
+
+  yearSelect.innerHTML='<option value="">All Years</option>'+
+    years.map(year=>`<option value="${escapeAttribute(year)}">${escapeHTML(year)}</option>`).join("");
+
+  if(years.includes(currentValue)) yearSelect.value=currentValue;
+}
+
+function getColumnValueByAliases(row,aliases){
+  const keys=Object.keys(row||{});
+  for(const alias of aliases){
+    const target=normalizeText(alias);
+    const key=keys.find(k=>normalizeText(k)===target);
+    if(key!==undefined) return row[key]??"";
+  }
+  return "";
+}
+
+function extractYear(value){
+  const text=String(value??"").trim();
+  if(!text) return "";
+
+  /* Supports yyyy, dd-mm-yyyy, dd/mm/yyyy, yyyy-mm-dd and similar values */
+  const fourDigit=text.match(/(?:^|[^0-9])((?:19|20)\d{2})(?:[^0-9]|$)/);
+  if(fourDigit) return fourDigit[1];
+
+  const parsed=new Date(text);
+  if(!Number.isNaN(parsed.getTime())){
+    const year=parsed.getFullYear();
+    if(year>=1900 && year<=2100) return String(year);
+  }
+  return "";
+}
+/* ---------- TABLE RENDERING ----------
+   IMPORTANT:
+   tableHeaders is created directly from the complete first row of the
+   loaded CSV. No fixed column list is used. Therefore Banned Product
+   Master (and every other CSV) always displays ALL columns available
+   in its source CSV, including any columns added in future.
+--------------------------------------------------------- */
+function renderTable(data){
+  const head=document.getElementById("tableHead"),body=document.getElementById("tableBody");
+
+  if(!tableHeaders.length){
+    head.innerHTML="";
+    body.innerHTML='<tr><td class="no-data">No data available</td></tr>';
+    updateRecordCount(0);
+    return;
+  }
+
+  /* Show every CSV header exactly in source-file order */
+  const visibleHeaders=[...tableHeaders];
+
+  head.innerHTML=`<tr>${visibleHeaders.map(h=>`<th>${escapeHTML(h)}</th>`).join("")}</tr>`;
+
+  if(!data.length){
+    body.innerHTML=`<tr><td colspan="${visibleHeaders.length}" class="no-data">No records found</td></tr>`;
+    updateRecordCount(0);
+    return;
+  }
+
+  /* Show every column for every record; missing values remain blank */
+  body.innerHTML=data.map(row=>"<tr>"+visibleHeaders.map(header=>{
+    let value=Object.prototype.hasOwnProperty.call(row,header) ? row[header] : "";
+
+    if(normalizeText(header)==="status"){
+      value=formatStatus(value);
+    }else if(isLink(value)){
+      value=`<a href="${escapeAttribute(value)}" target="_blank" rel="noopener">View Document</a>`;
+    }else{
+      value=escapeHTML(value);
+    }
+
+    return `<td>${value}</td>`;
+  }).join("")+"</tr>").join("");
+
+  updateRecordCount(data.length);
+}
+function formatStatus(status){
+  const value=String(status||""),n=value.toLowerCase().trim();
+  let c="status-default"; if(n.includes("banned"))c="status-banned";else if(n.includes("open"))c="status-open";else if(n.includes("closed"))c="status-closed";else if(n.includes("active"))c="status-active";
+  return `<span class="status ${c}">${escapeHTML(value)}</span>`;
+}
+function filterTable(){
+  let data=[...masterData];
+
+  /* Banned Product Master: dedicated Product Name + Generic Name + Year filters */
+  if(currentMainTab==="banned"){
+    const productKeyword=(document.getElementById("bannedProductSearch")?.value||"").toLowerCase().trim();
+    const genericKeyword=(document.getElementById("bannedGenericSearch")?.value||"").toLowerCase().trim();
+    const selectedYear=document.getElementById("bannedYearFilter")?.value||"";
+
+    if(productKeyword){
+      data=data.filter(row=>
+        String(getColumnValueByAliases(row,["Product Name","ProductName","Brand Name"])).toLowerCase().includes(productKeyword)
+      );
+    }
+
+    if(genericKeyword){
+      data=data.filter(row=>
+        String(getColumnValueByAliases(row,["Generic Name","GenericName","Generic"])).toLowerCase().includes(genericKeyword)
+      );
+    }
+
+    if(selectedYear){
+      data=data.filter(row=>{
+        const notificationDate=getColumnValueByAliases(row,["Notification Date","NotificationDate","Date of Notification"]);
+        return extractYear(notificationDate)===selectedYear;
+      });
+    }
+
+  }else{
+    /* Existing filter logic for all other main tabs remains unchanged */
+    const keyword=document.getElementById("searchInput").value.toLowerCase().trim();
+    const col=document.getElementById("columnFilter").value;
+    if(keyword){
+      data=data.filter(row=>
+        col
+          ?String(row[col]||"").toLowerCase().includes(keyword)
+          :Object.values(row).some(v=>String(v).toLowerCase().includes(keyword))
+      );
+    }
+  }
+
+  renderTable(data);
+}
+
+function resetFilter(){
+  resetSearchBox();
+  renderTable(masterData);
+}
+
+function resetSearchBox(){
+  const s=document.getElementById("searchInput");
+  const c=document.getElementById("columnFilter");
+  const bp=document.getElementById("bannedProductSearch");
+  const bg=document.getElementById("bannedGenericSearch");
+  const by=document.getElementById("bannedYearFilter");
+
+  if(s)s.value="";
+  if(c)c.value="";
+  if(bp)bp.value="";
+  if(bg)bg.value="";
+  if(by)by.value="";
+}
+function getColumnValue(row,columnName){const key=Object.keys(row).find(k=>normalizeText(k)===normalizeText(columnName));return key?row[key]:"";}
+function normalizeText(value){return String(value||"").toLowerCase().trim().replace(/\s+/g," ");}
+function updateRecordCount(count){document.getElementById("recordCount").innerText=count+(count===1?" Record":" Records");}
+function showLoading(){document.getElementById("tableHead").innerHTML="";document.getElementById("tableBody").innerHTML='<tr><td class="loading">Loading data...</td></tr>';document.getElementById("recordCount").innerText="Loading...";}
+function showNoData(message){document.getElementById("tableHead").innerHTML="";document.getElementById("tableBody").innerHTML=`<tr><td class="no-data">${escapeHTML(message)}</td></tr>`;updateRecordCount(0);}
+function isLink(v){return /^https?:\/\//i.test(String(v||"").trim());}
+function encodePath(p){return String(p).split("/").map(encodeURIComponent).join("/");}
+function escapeHTML(v){return String(v??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");}
+function escapeAttribute(v){return escapeHTML(v);}
+function escapeJS(v){return String(v??"").replace(/\\/g,"\\\\").replace(/'/g,"\\'").replace(/\r?\n/g," ");}
+</script>
+</body>
+</html>
