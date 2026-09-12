@@ -578,13 +578,6 @@ const APP_CONFIG = {
     "CDSCO":"data/government-letter/government-letter-master.csv",
     "FSSAI":"data/government-letter/government-letter-master.csv"
   }},
-  regulatory:{title:"REGULATORY AMENDMENT MASTER",subtabs:{
-    "All":"data/regulatory-amendment/regulatory-amendment-master.csv",
-    "NPPA":"data/regulatory-amendment/regulatory-amendment-master.csv",
-    "State FDA":"data/regulatory-amendment/regulatory-amendment-master.csv",
-    "CDSCO":"data/regulatory-amendment/regulatory-amendment-master.csv",
-    "FSSAI":"data/regulatory-amendment/regulatory-amendment-master.csv"
-  }},
   nppaPricing:{title:"NPPA PRICING",subtabs:{
     "Ceiling Price":"data/nppa-pricing/5. Ceiling-Price-Master.csv",
     "Retail Price":"data/nppa-pricing/Retail-Price-Approval.csv"
@@ -599,6 +592,10 @@ const APP_CONFIG = {
     "Medical Device":{"All":"data/notifications/medical-device/medical-device.csv","Act & Rule":"data/notifications/medical-device/Act & Rule.csv","Amendment":"data/notifications/medical-device/Amendment.csv"},
     Other:{"All":"data/notifications/Other Documents.csv"},  
   }}
+    Learning:{title:"SELF LEARNING",subtabs:{
+    "LG Consultant":"data/SELF LEARNING/SELF LEARNING.csv",
+    "Self Clarification":"data/SELF LEARNING/Self Clarification.csv",
+  }},
 };
 
 let currentMainTab="banned";
@@ -797,7 +794,7 @@ function renderMainTabs(){
     `<button class="main-tab ${key===currentMainTab?"active":""}" data-main="${escapeAttribute(key)}" onclick="openMainTab('${escapeJS(key)}',this)">${escapeHTML(mainTitle(key))}</button>`).join("");
 }
 function mainTitle(key){
-  return {"banned":"Banned Product","schedule":"Schedule List","govtLetter":"Govt. Letter Status","regulatory":"Regulatory Amendment","nppaPricing":"NPPA Pricing","notifications":"Notifications"}[key]||APP_CONFIG[key].title;
+  return {"banned":"Banned Product","schedule":"Schedule List","govtLetter":"Govt. Letter Status","nppaPricing":"NPPA Pricing","notifications":"Notifications","Learning":"SELF LEARNING"}[key]||APP_CONFIG[key].title;
 }
 function openMainTab(tabName,button){
   currentMainTab=tabName; currentSelections=[];
